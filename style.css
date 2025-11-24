@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'TikTok Sans', sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  background-image: url('https://images.unsplash.com/photo-1533682107742-6d89719b17b8?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f2e7fe; /* pinkish light */
+  overflow-x: hidden;
+}
+
+/* Overlay gelap supaya teks jelas */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 0, 25, 0.7);
+  z-index: 0;
+}
+
+/* Earth kiri bawah */
+.earth {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 150px;
+  height: 150px;
+  background: url('https://cdn.pixabay.com/photo/2017/01/20/00/30/earth-1990237_1280.png') no-repeat center/contain;
+  filter: drop-shadow(0 0 8px #e0bbff);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Moon kanan atas */
+.moon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  background: url('https://cdn.pixabay.com/photo/2016/03/27/19/15/moon-1280012_1280.png') no-repeat center/contain;
+  filter: drop-shadow(0 0 8px #c6a0ff);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Kotak surat */
+.letter {
+  display: none;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: auto;
+  background: rgba(30, 10, 50, 0.8);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(200, 160, 255, 0.6);
+  backdrop-filter: blur(8px);
+  color: #f2e7fe;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* Bintang bintang (optional, bisa dihapus jika ingin) */
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  box-shadow:
+    15px 25px 1px 1px #f2e7fe,
+    60px 55px 1px 1px #e4ccff,
+    110px 15px 1px 1px #c6a0ff,
+    150px 80px 1px 1px #f2e7fe,
+    190px 30px 1px 1px #e4ccff,
+    230px 75px 1px 1px #c6a0ff,
+    280px 20px 1px 1px #f2e7fe,
+    320px 65px 1px 1px #e4ccff,
+    360px 15px 1px 1px #c6a0ff,
+    400px 95px 1px 1px #f2e7fe;
+  animation: twinkle 3s infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Judul surat */
+.letter h1 {
+  font-family: 'Lovers Quarrel', cursive;
+  font-size: 56px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #caa3ff;
+  position: relative;
+  z-index: 2;
+}
+
+/* Paragraf surat */
+.letter p {
+  opacity: 0;
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.8s ease;
+}
+
+/* Kata-kata terakhir surat */
+.last-word {
+  margin-top: 40px;
+  font-size: 24px;
+  text-align: center;
+  color: #d9bbff;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Tombol buka surat */
+.open-btn {
+  display: block;
+  margin: 40px auto;
+  padding: 12px 28px;
+  background-color: #6219b7;
+  color: #f2e7fe;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(98, 25, 183, 0.7);
+}
+
+.open-btn:hover {
+  background-color: #8a4ef7;
+  box-shadow: 0 6px 10px rgba(138, 78, 247, 0.8);
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .letter {
+    padding: 20px 16px;
+    font-size: 16px;
+  }
+
+  .letter h1 {
+    font-size: 40px;
+  }
+
+  .letter p {
+    font-size: 15px;
+  }
+
+  .last-word {
+    font-size: 18px;
+  }
+
+  .open-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .earth,
+  .moon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .earth {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .moon {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .letter h1 {
+    font-size: 32px;
+  }
+
+  .letter {
+    padding: 16px 12px;
+  }
+
+  .open-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+}
+
+/* INTRO SCREEN */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: rgba(20, 10, 40, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  flex-direction: column;
+  animation: fadeIn 1.2s ease;
+}
+
+.intro-content {
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  z-index: 3;
+}
+
+.intro-title {
+  font-family: 'Lovers Quarrel', cursive;
+  font-size: 64px;
+  color: #e8d4ff;
+  text-shadow: 0 0 10px #d0a8ff, 0 0 30px #985eff;
+  animation: fadeInUp 1s ease;
+}
+
+.intro-text {
+  font-size: 18px;
+  color: #f5e9ff;
+  line-height: 1.6;
+  animation: fadeInUp 1.2s ease;
+  max-width: 90%;
+}
+
+.open-btn {
+  padding: 12px 28px;
+  background-color: #a04dff;
+  color: #f9eaff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(160, 77, 255, 0.6);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.open-btn:hover {
+  background-color: #c285ff;
+  box-shadow: 0 6px 16px rgba(200, 133, 255, 0.8);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
